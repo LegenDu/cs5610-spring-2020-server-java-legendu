@@ -5,13 +5,23 @@
     padding-bottom: 2px;
 }
 
-/* .wbdv-course-navbar .nav-item {
-    padding-top: 0.3rem;
-    padding-bottom: 0.3rem;
-} */
+#wbdv-module-div {
+    height: 100vh;
+}
 
 .wbdv-course-navbar .nav-item.active {
     background-color: #3A3D40;
+}
+
+.wbdv-module-item-add-row {
+    background-color: #373a3d;
+    padding-right: 0;
+}
+
+.wbdv-module-item-add-btn {
+    float: right;
+    font-size: 1.5rem;
+    margin-right: 0;
 }
 
 .wbdv-course-navbar .nav-item:not(.active) {

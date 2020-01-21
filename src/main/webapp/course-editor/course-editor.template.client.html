@@ -10,7 +10,9 @@
     </head>
     <body>
         <nav class="navbar wbdv-course-navbar navbar-expand-lg navbar-dark pl-0">
-            <div class="close mx-4">✕</div>
+            <div class="mx-4">
+                <a class="btn btn-dark wbdv-course-editor wbdv-close" href="../index.html">✕</a>
+            </div>
             <a class="navbar-brand wbdv-course-title" href="#">Course Editor</a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
               <span class="navbar-toggler-icon"></span>
@@ -20,8 +22,8 @@
                 <li class="nav-item mx-2 my-1 py-0 px-4">
                     <a class="nav-link" href="#">Build<span class="sr-only">(current)</span></a>
                 </li>
-                <li class="nav-item mx-2 my-1 py-0 px-4 active wbdv-page-tab">
-                    <a class="nav-link" href="#">Pages</a>
+                <li class="nav-item mx-2 my-1 py-0 px-4 active">
+                    <a class="nav-link wbdv-page-tab" href="#">Pages</a>
                 </li>
                 <li class="nav-item mx-2 my-1 py-0 px-4">
                     <a class="nav-link" href="#">Theme</a>
@@ -43,17 +45,40 @@
           </nav>
 
         <div class="container-fluid">
-            <div class="row" style="height: 100vh;">
+            <div class="row" id="wbdv-module-div">
                 <div class="col-lg-4 wbdv-module-div">
                     <ul class="list-group wbdv-module-list">
-                        <li class="list-group-item wbdv-module-item my-2 mx-3 rounded">Module 1 - jQuery<span class="close">x</span></li>
-                        <li class="list-group-item wbdv-module-item my-2 mx-3 rounded active">Module 2 - React<span class="close">x</span></li>
-                        <li class="list-group-item wbdv-module-item my-2 mx-3 rounded">Module 3 - Redux<span class="close">x</span></li>
-                        <li class="list-group-item wbdv-module-item my-2 mx-3 rounded">Module 4 - Native<span class="close">x</span></li>
-                        <li class="list-group-item wbdv-module-item my-2 mx-3 rounded">Module 5 - Angular<span class="close">x</span></li>
-                        <li class="list-group-item wbdv-module-item my-2 mx-3 rounded">Module 6 - Node<span class="close">x</span></li>
-                        <li class="list-group-item wbdv-module-item my-2 mx-3 rounded">Module 7 - Mongo<span class="close">x</span></li>
-                        <li class="list-group-item wbdv-module-item my-2 mx-3 rounded"><span class="close">+</span></li>
+                        <li class="list-group-item wbdv-module-item my-2 mx-3 rounded">
+                            <span class="wbdv-module-item-title">Module 1 - jQuery</span>
+                            <span class="close wbdv-module-item-delete-btn">x</span>
+                        </li>
+                        <li class="list-group-item wbdv-module-item my-2 mx-3 rounded active">
+                            <span class="wbdv-module-item-title">Module 2 - React</span>
+                            <span class="close wbdv-module-item-delete-btn">x</span>
+                        </li>
+                        <li class="list-group-item wbdv-module-item my-2 mx-3 rounded">
+                            <span class="wbdv-module-item-title">Module 3 - Redux</span>
+                            <span class="close wbdv-module-item-delete-btn">x</span>
+                        </li>
+                        <li class="list-group-item wbdv-module-item my-2 mx-3 rounded">
+                            <span class="wbdv-module-item-title">Module 4 - Native</span>
+                            <span class="close wbdv-module-item-delete-btn">x</span>
+                        </li>
+                        <li class="list-group-item wbdv-module-item my-2 mx-3 rounded">
+                            <span class="wbdv-module-item-title">Module 5 - Angular</span>
+                            <span class="close wbdv-module-item-delete-btn">x</span>
+                        </li>
+                        <li class="list-group-item wbdv-module-item my-2 mx-3 rounded">
+                            <span class="wbdv-module-item-title">Module 6 - Node</span>
+                            <span class="close wbdv-module-item-delete-btn">x</span>
+                        </li>
+                        <li class="list-group-item wbdv-module-item my-2 mx-3 rounded">
+                            <span class="wbdv-module-item-title">Module 7 - Mongo</span>
+                            <span class="close wbdv-module-item-delete-btn">x</span>
+                        </li>
+                        <li class="list-group-item my-2 mx-3 rounded wbdv-module-item-add-row">
+                            <button class="btn btn-dark wbdv-module-item-add-btn">+</button>
+                        </li>
                     </ul>
                 </div>
                 
@@ -99,7 +124,7 @@
                                             <i class="fas fa-arrow-down"></i>
                                         </div>
                                         <select name="" id="" class="mr-1">
-                                            <option value="HEADING">Heading</option>
+                                            <option value="HEADING" selected="selected">Heading</option>
                                             <option value="PARAGRAPH">Paragraph</option>
                                             <option value="LIST">List</option>
                                             <option value="IMAGE">Image</option>
@@ -133,12 +158,157 @@
                                 <h1 class="p-0">Heading text</h1>
                             </li>
                         </div>
+                        <div class="border rounded my-2">
+                            <li class="list-group-item pb-0">
+                                <div class="row">
+                                    <div class="col-6">
+                                        <h5>Paragraph widget</h5>
+                                    </div>
+                                    <div class="col-6 d-flex justify-content-end">
+                                        <div class="border px-2 py-1 mr-1 rounded" style="background-color: #f0bc2e;">
+                                            <i class="fas fa-arrow-up"></i>
+                                        </div>
+                                        <div class="border px-2 py-1 mr-1 rounded" style="background-color: #f0bc2e;">
+                                            <i class="fas fa-arrow-down"></i>
+                                        </div>
+                                        <select name="" id="" class="mr-1">
+                                            <option value="HEADING">Heading</option>
+                                            <option value="PARAGRAPH" selected="selected">Paragraph</option>
+                                            <option value="LIST">List</option>
+                                            <option value="IMAGE">Image</option>
+                                        </select>
+                                        <div>
+                                            <i class="fas fa-window-close fa-2x" style="color: red;"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                            <li class="list-group-item d-flex flex-column mt-0 pt-1">
+                                <textarea name="" id="" cols="30" rows="5" placeholder="Paragraph text"></textarea>
+                                <!-- <input class="wbdv-widget-input" type="text" placeholder="Paragraph text"> -->
+                            </li>
+                            <li class="list-group-item d-flex flex-column">
+                                <select class="wbdv-widget-input" name="" id="">
+                                    <option value="HEADING-1">Heading 1</option>
+                                    <option value="HEADING-2">Heading 2</option>
+                                    <option value="HEADING-2">Heading 3</option>
+                                    <option value="HEADING-2">Heading 4</option>
+                                    <option value="HEADING-2">Heading 5</option>
+                                    <option value="HEADING-2">Heading 6</option>
+                                </select>
+                            </li>
+                            <li class="list-group-item d-flex flex-column">
+                                <input class="wbdv-widget-input" type="text" placeholder="Widget name">
+                            </li>
+                            <li class="list-group-item d-flex flex-column pb-0">
+                                <h5 class="p-0">Preview</h5>
+                            </li>
+                            <li class="list-group-item d-flex flex-column pt-0">
+                                <h1 class="p-0">Paragraph text</h1>
+                            </li>
+                        </div>
+                        <div class="border rounded my-2">
+                            <li class="list-group-item pb-0">
+                                <div class="row">
+                                    <div class="col-6">
+                                        <h5>List widget</h5>
+                                    </div>
+                                    <div class="col-6 d-flex justify-content-end">
+                                        <div class="border px-2 py-1 mr-1 rounded" style="background-color: #f0bc2e;">
+                                            <i class="fas fa-arrow-up"></i>
+                                        </div>
+                                        <div class="border px-2 py-1 mr-1 rounded" style="background-color: #f0bc2e;">
+                                            <i class="fas fa-arrow-down"></i>
+                                        </div>
+                                        <select name="" id="" class="mr-1">
+                                            <option value="HEADING">Heading</option>
+                                            <option value="PARAGRAPH">Paragraph</option>
+                                            <option value="LIST" selected="selected">List</option>
+                                            <option value="IMAGE">Image</option>
+                                        </select>
+                                        <div>
+                                            <i class="fas fa-window-close fa-2x" style="color: red;"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                            <li class="list-group-item d-flex flex-column mt-0 pt-1">
+                                <textarea name="" id="" cols="30" rows="3" placeholder="List text"></textarea>
+                            </li>
+                            <li class="list-group-item d-flex flex-column">
+                                <select class="wbdv-widget-input" name="" id="">
+                                    <option value="HEADING-1">Heading 1</option>
+                                    <option value="HEADING-2">Heading 2</option>
+                                    <option value="HEADING-2">Heading 3</option>
+                                    <option value="HEADING-2">Heading 4</option>
+                                    <option value="HEADING-2">Heading 5</option>
+                                    <option value="HEADING-2">Heading 6</option>
+                                </select>
+                            </li>
+                            <li class="list-group-item d-flex flex-column">
+                                <input class="wbdv-widget-input" type="text" placeholder="Widget name">
+                            </li>
+                            <li class="list-group-item d-flex flex-column pb-0">
+                                <h5 class="p-0">Preview</h5>
+                            </li>
+                            <li class="list-group-item d-flex flex-column pt-0">
+                                <h1 class="p-0">List text</h1>
+                            </li>
+                        </div>
+                        <div class="border rounded">
+                            <li class="list-group-item pb-0">
+                                <div class="row">
+                                    <div class="col-6">
+                                        <h5>Image widget</h5>
+                                    </div>
+                                    <div class="col-6 d-flex justify-content-end">
+                                        <div class="border px-2 py-1 mr-1 rounded" style="background-color: #f0bc2e;">
+                                            <i class="fas fa-arrow-up"></i>
+                                        </div>
+                                        <div class="border px-2 py-1 mr-1 rounded" style="background-color: #f0bc2e;">
+                                            <i class="fas fa-arrow-down"></i>
+                                        </div>
+                                        <select name="" id="" class="mr-1">
+                                            <option value="HEADING">Heading</option>
+                                            <option value="PARAGRAPH">Paragraph</option>
+                                            <option value="LIST">List</option>
+                                            <option value="IMAGE" selected="selected">Image</option>
+                                        </select>
+                                        <div>
+                                            <i class="fas fa-window-close fa-2x" style="color: red;"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                            <li class="list-group-item d-flex flex-column mt-0 pt-1">
+                                <input class="wbdv-widget-input" type="text" placeholder="Image URL">
+                            </li>
+                            <li class="list-group-item d-flex flex-column">
+                                <select class="wbdv-widget-input" name="" id="">
+                                    <option value="HEADING-1">Heading 1</option>
+                                    <option value="HEADING-2">Heading 2</option>
+                                    <option value="HEADING-2">Heading 3</option>
+                                    <option value="HEADING-2">Heading 4</option>
+                                    <option value="HEADING-2">Heading 5</option>
+                                    <option value="HEADING-2">Heading 6</option>
+                                </select>
+                            </li>
+                            <li class="list-group-item d-flex flex-column">
+                                <input class="wbdv-widget-input" type="text" placeholder="Widget name">
+                            </li>
+                            <li class="list-group-item d-flex flex-column pb-0">
+                                <h5 class="p-0">Preview</h5>
+                            </li>
+                            <li class="list-group-item d-flex flex-column pt-0">
+                                <!-- <h1 class="p-0">Heading text</h1> -->
+                                <i>img</i>
+                            </li>
+                        </div>
                     </ul>
                     <div class="d-flex justify-content-end mt-2">
                         <button class="btn d-flex justify-content-center mfr-0" id="wbdv-add-widget-btn">
                             <i class="fas fa-plus-circle fa-add-btn p-0"></i>
                         </button>
-                        
                     </div>
                 </div>
             </div>   
