@@ -32,12 +32,6 @@ body {
     float: right;
 }
 
-#wbdv-header-row {
-    background-color: #ebebeb;
-    height: 3rem;
-    justify-content: space-between;
-}
-
 i {
     color: #388bff;
     padding-right: 1rem;
@@ -64,6 +58,8 @@ a {
     background-color: white;
     height: 3rem;
     align-content: center;
+    margin-top: -1px;
+    padding-top: 15px;
 }
 
 .wbdv-row .wbdv-owner {
@@ -79,8 +75,4 @@ a {
     padding-top: 1rem;
     padding-bottom: 0;
     margin-bottom: 0;
-}
-
-.wbdv-course {
-    margin-top: -1px;
 }
