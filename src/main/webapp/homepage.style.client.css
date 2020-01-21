@@ -1,0 +1,86 @@
+body {
+    background-color: #ededed;
+}
+
+.container-fluid {
+    margin-left: 0;
+    margin-right: 0;
+    padding-left: 0;
+    padding-right: 0;
+}
+
+#wbdv-header-row {
+    margin-left: 0;
+    margin-right: 0;
+}
+
+#wbdv-new-course{
+    max-width: 50vw;
+    width: 30vw;
+    background-color: #6c9af0;
+    border: none;
+}
+
+.fa-plus-circle{
+    color: #cc4f41;
+}
+
+.wbdv-add-course-float {
+    /* position: relative; */
+    bottom: 20px;
+    right: 100px;
+    float: right;
+}
+
+#wbdv-header-row {
+    background-color: #ebebeb;
+    height: 3rem;
+    justify-content: space-between;
+}
+
+i {
+    color: #388bff;
+    padding-right: 1rem;
+}
+
+a {
+    color: black;
+}
+
+#wbdv-header-row {
+    height: 3rem;
+    background-color: #ededed;
+    box-shadow: 0px 1px 3px gray;
+    z-index: 1;
+    position: relative;
+}
+
+.dropdown-toggle {
+    background-color: #ededed;
+    color: black;
+}
+
+.wbdv-course {
+    background-color: white;
+    height: 3rem;
+    align-content: center;
+}
+
+.wbdv-row .wbdv-owner {
+    color: gray;
+    text-align: justify;
+}
+
+.wbdv-row .wbdv-modiﬁed-date{
+    color: gray;
+}
+
+.wbdv-date-label {
+    padding-top: 1rem;
+    padding-bottom: 0;
+    margin-bottom: 0;
+}
+
+.wbdv-course {
+    margin-top: -1px;
+}
