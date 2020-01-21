@@ -10,10 +10,10 @@
     <body>
         <nav class="navbar navbar-dark bg-primary" id="wbdv-navbar">
             <div class="container-fluid">
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="" aria-controls="" aria-expanded="false" aria-label="Toggle navigation">
+                <button class="navbar-toggler wbdv-field wbdv-hamburger" type="button" data-toggle="collapse" data-target="" aria-controls="" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
-                <a href="#" class="navbar-brand d-none d-md-block mx-3">Course Manager</a>
+                <a href="#" class="navbar-brand d-none d-md-block mx-3 wbdv-label wbdv-course-manager">Course Manager</a>
                 
                 <form class="form-inline pl-2">
                     <input class="form-control wbdv-field wbdv-new-course" id="wbdv-new-course" type="text" placeholder="New Course Title">
@@ -32,24 +32,24 @@
                 <div class="col-md-10">
                     <div class="row">
                         <div class="col-6 my-auto">
-                            <a href="#">Title</a>
+                            <a href="#" class="wbdv-header wbdv-title">Title</a>
                         </div>
                         <div class="col-2 my-auto">
                             <div class="dropdown">
-                                <button class="btn dropdown-toggle" type="button" id="dropdownMenu" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                Owned by
+                                <button class="btn dropdown-toggle wbdv-header wbdv-owner" type="button" id="dropdownMenu" data-toggle="dropdown" 
+                                        aria-haspopup="true" aria-expanded="false">Owned by
                                 </button>
                                 <div class="dropdown-menu" aria-labelledby="dropdownMenu">
-                                <button class="dropdown-item" type="button">Me</button>
-                                <button class="dropdown-item" type="button">Others</button>
+                                    <button class="dropdown-item" type="button">Me</button>
+                                    <button class="dropdown-item" type="button">Others</button>
                                 </div>
                             </div>
                         </div>
-                        <div class="col-3 my-auto">Last Modified by me</div>
+                        <div class="col-3 my-auto wbdv-header wbdv-last-modified">Last Modified by me</div>
                         <div class="my-auto">
                             <div class="row">
-                                <div class="col-6 p-0 m-0"><i class="fas fa-grip-horizontal"></i></div>
-                                <div class="col-6 p-0 m-0"><i class="fas fa-sort-alpha-down"></i></div>
+                                <div class="col-6 p-0 m-0 btn wbdv-button wbdv-grid-layout"><i class="fas fa-grip-horizontal"></i></div>
+                                <div class="col-6 p-0 m-0 btn wbdv-header wbdv-sort"><i class="fas fa-sort-alpha-down"></i></div>
                             </div> 
                         </div>
                     </div>
@@ -63,91 +63,91 @@
             <div class="col-12 col-md-10">
                 <div class="row wbdv-row wbdv-course border">
                     <div class="col-11 col-md-6">
-                        <i class="fa fa-file-text-o" aria-hidden="true"></i>
-                        <a href="course-editor/course-editor.template.client.html">CS5500 Software Engineering Graduate</a>
+                        <i class="fa fa-file-text-o wbdv-row wbdv-icon" aria-hidden="true"></i>
+                        <a href="course-editor/course-editor.template.client.html" class="wbdv-row wbdv-title">CS5500 Software Engineering Graduate</a>
                     </div>
                     <div class="col-2 wbdv-row wbdv-owner d-none d-md-block">me</div>
                     <div class="col-3 wbdv-row wbdv-modiﬁed-date d-none d-md-block">6:45PM</div>
-                    <div class="col-1">✕</div>
+                    <div class="col-1 wbdv-row wbdv-button wbdv-delete">✕</div>
                 </div>
                 <div class="row wbdv-row wbdv-course border">
                     <div class="col-11 col-md-6">
-                        <i class="fa fa-file-text-o" aria-hidden="true"></i> 
-                        <a href="course-editor/course-editor.template.client.html">CS4550 Software Engineering Undergraduate</a>
+                        <i class="fa fa-file-text-o wbdv-row wbdv-icon" aria-hidden="true"></i> 
+                        <a href="course-editor/course-editor.template.client.html" class="wbdv-row wbdv-title">CS4550 Software Engineering Undergraduate</a>
                     </div>
                     <div class="col-2 wbdv-row wbdv-owner d-none d-md-block">me</div>
                     <div class="col-3 wbdv-row wbdv-modiﬁed-date d-none d-md-block">6:45PM</div>
-                    <div class="col-1">✕</div>
+                    <div class="col-1 wbdv-row wbdv-button wbdv-delete">✕</div>
                 </div>
                 <div class="row wbdv-row wbdv-course border">
                     <div class="col-11 col-md-6">
-                        <i class="fa fa-file-text-o" aria-hidden="true"></i> 
-                        <a href="course-editor/course-editor.template.client.html">CS4500 WebDev Undergraduate</a>
+                        <i class="fa fa-file-text-o wbdv-row wbdv-icon" aria-hidden="true"></i> 
+                        <a href="course-editor/course-editor.template.client.html" class="wbdv-row wbdv-title">CS4500 WebDev Undergraduate</a>
                     </div>
                     <div class="col-2 wbdv-row wbdv-owner d-none d-md-block">me</div>
                     <div class="col-3 wbdv-row wbdv-modiﬁed-date d-none d-md-block">6:45PM</div>
-                    <div class="col-1">✕</div>
+                    <div class="col-1 wbdv-row wbdv-button wbdv-delete">✕</div>
                 </div>
                 <div class="row wbdv-row wbdv-course border">
                     <div class="col-11 col-md-6">
-                        <i class="fa fa-file-text-o" aria-hidden="true"></i> 
-                        <a href="course-editor/course-editor.template.client.html">CS5610 WebDev Graduate</a>
+                        <i class="fa fa-file-text-o wbdv-row wbdv-icon" aria-hidden="true"></i> 
+                        <a href="course-editor/course-editor.template.client.html" class="wbdv-row wbdv-title">CS5610 WebDev Graduate</a>
                     </div>
                     <div class="col-2 wbdv-row wbdv-owner d-none d-md-block">me</div>
                     <div class="col-3 wbdv-row wbdv-modiﬁed-date d-none d-md-block">6:45PM</div>
-                    <div class="col-1">✕</div>
+                    <div class="col-1 wbdv-row wbdv-button wbdv-delete">✕</div>
                 </div>
                 <div class="row wbdv-row wbdv-course border">
                     <div class="col-11 col-md-6">
-                        <i class="fa fa-file-text-o" aria-hidden="true"></i> 
-                        <a href="course-editor/course-editor.template.client.html">CS5200 Intro to Databases</a>
+                        <i class="fa fa-file-text-o wbdv-row wbdv-icon" aria-hidden="true"></i> 
+                        <a href="course-editor/course-editor.template.client.html" class="wbdv-row wbdv-title">CS5200 Intro to Databases</a>
                     </div>
                     <div class="col-2 wbdv-row wbdv-owner d-none d-md-block">me</div>
                     <div class="col-3 wbdv-row wbdv-modiﬁed-date d-none d-md-block">6:44PM</div>
-                    <div class="col-1">✕</div>
+                    <div class="col-1 wbdv-row wbdv-button wbdv-delete">✕</div>
                 </div>
                 <div class="row">
                     <label class="wbdv-date-label">Yesterday</label>
                 </div>
                 <div class="row wbdv-row wbdv-course border">
                     <div class="col-11 col-md-6">
-                        <i class="fa fa-file-text-o" aria-hidden="true"></i> 
-                        <a href="course-editor/course-editor.template.client.html">WEBDEV 2 - React</a>
+                        <i class="fa fa-file-text-o wbdv-row wbdv-icon" aria-hidden="true"></i> 
+                        <a href="course-editor/course-editor.template.client.html" class="wbdv-row wbdv-title">WEBDEV 2 - React</a>
                     </div>
                     <div class="col-2 wbdv-row wbdv-owner d-none d-md-block">me</div>
                     <div class="col-3 wbdv-row wbdv-modiﬁed-date d-none d-md-block">May 4, 2018</div>
-                    <div class="col-1">✕</div>
+                    <div class="col-1 wbdv-row wbdv-button wbdv-delete">✕</div>
                 </div>
                 <div class="row">
                     <label class="wbdv-date-label">Past 7 Days</label>
                 </div>
                 <div class="row wbdv-row wbdv-course border">
                     <div class="col-11 col-md-6">
-                        <i class="fa fa-file-text-o" aria-hidden="true"></i> 
-                        <a href="course-editor/course-editor.template.client.html">WEBDEV Syllabus</a>
+                        <i class="fa fa-file-text-o wbdv-row wbdv-icon" aria-hidden="true"></i> 
+                        <a href="course-editor/course-editor.template.client.html" class="wbdv-row wbdv-title">WEBDEV Syllabus</a>
                     </div>
                     <div class="col-2 wbdv-row wbdv-owner d-none d-md-block">me</div>
                     <div class="col-3 wbdv-row wbdv-modiﬁed-date d-none d-md-block">May 3, 2018</div>
-                    <div class="col-1">✕</div>
+                    <div class="col-1 wbdv-row wbdv-button wbdv-delete">✕</div>
                 </div>
                 <div class="row wbdv-row wbdv-course border">
                     <div class="col-11 col-md-6">
-                        <i class="fa fa-file-text-o" aria-hidden="true"></i> 
-                        <a href="course-editor/course-editor.template.client.html">WEBDEV 1 - JavaScript, Java, SQL</a>
+                        <i class="fa fa-file-text-o wbdv-row wbdv-icon" aria-hidden="true"></i> 
+                        <a href="course-editor/course-editor.template.client.html" class="wbdv-row wbdv-title">WEBDEV 1 - JavaScript, Java, SQL</a>
                     </div>
                     <div class="col-2 wbdv-row wbdv-owner d-none d-md-block">me</div>
                     <div class="col-3 wbdv-row wbdv-modiﬁed-date d-none d-md-block">May 3, 2018</div>
-                    <div class="col-1">✕</div>
+                    <div class="col-1 wbdv-row wbdv-button wbdv-delete">✕</div>
                 </div>
             </div>
             <div class="col-md-1"></div>
         </div>
 
-        <!-- <div class="container-fluid">
+        <div class="container-fluid">
             <button class="btn wbdv-add-course-float">
                 <i class="fas fa-plus-circle fa-3x"></i>
             </button>
-        </div> -->
+        </div>
 
         
 
