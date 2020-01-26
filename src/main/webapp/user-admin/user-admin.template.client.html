@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Admin</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"/>
+    <link href="user-admin.style.client.css" rel="stylesheet" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="../services/user.service.client.js"></script>
+    <script src="user-admin.controller.client.js"></script>
+    <script src="https://kit.fontawesome.com/e055a1a9a3.js" crossorigin="anonymous"></script>   
+</head>
+<body>
+    <div class="container">
+        <h1>User Admin</h1>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th scope="col">Username</th>
+                    <th scope="col">Password</th>
+                    <th scope="col">First Name</th>
+                    <th scope="col">Last Name</th>
+                    <th scope="col">role</th>
+                    <th>&nbsp;</th>
+                </tr>
+            </thead>
+            <tr class="wbdv-form">
+                <td>
+                    <input id="usernameFld" class="form-control" type="text" placeholder="Username">
+                </td>
+                <td>
+                    <input id="passwordFld" class="form-control" type="password" placeholder="password">
+                </td>
+                <td>
+                    <input id="firstNameFld" class="form-control" type="text" placeholder="First Name">
+                </td>
+                <td>
+                    <input id="lastNameFld" class="form-control" type="text" placeholder="Last Name">
+                </td>
+                <td>
+                    <select name="" id="roleFld" class="form-control">
+                        <option value="FACULTY">Faculty</option>
+                        <option value="STUDENT">Student</option>
+                        <option value="ADMIN">Admin</option>
+                    </select>
+                </td>
+                <td><span class="float-right" style="white-space: nowrap">
+                    <i class="fa-2x fa fa-search wbdv-search"></i> 
+                    <i class="fa-2x fa fa-plus wbdv-create"></i> 
+                    <i class="fa-2x fa fa-check wbdv-update"></i></span>
+                </td>              
+            </tr>
+            <tbody class="wbdv-tbody">
+            </tbody>
+        </table>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+            crossorigin="anonymous"></script>
+    <script src="../services/user.service.client.js"></script>
+    <script src="user-admin.controller.client.js"></script>
+</body>
+</html>
