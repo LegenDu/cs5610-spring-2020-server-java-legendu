@@ -17,10 +17,9 @@
 
     let currentUserId = -1
     const editUser = index => {
-        const userId = users[index]._id;
-        currentUserId = userId
+        const userId = users[index].getUserId();
+        currentUserId = userId;
         userService.findUserById(userId).then(user => {
-            console.log(user)
             usernameFld.val(user.username)
             firstnameFld.val(user.firstname)
             lastnameFld.val(user.lastname)
@@ -32,11 +31,11 @@
         tableBody.empty()
         for(let u=0; u<users.length; u++) {
             let row = $("<tr class=\"wbdv-template wbdv-user wbdv-hidden\">")
-            let usernameFld = $("<td class=\"wbdv-username\">" + users[u].username + "</td>")
+            let usernameFld = $("<td class=\"wbdv-username\">" + users[u].getUsername() + "</td>")
             let passwordFld = $("<td>&nbsp;</td>")
-            let firstnameFld = $("<td class=\"wbdv-first-name\">" + users[u].firstname + "</td>")
-            let lastnameFld = $("<td class=\"wbdv-first-name\">" + users[u].lastname + "</td>")
-            let roleFld = $("<td class=\"wbdv-role\">" + users[u].role + "</td>")
+            let firstnameFld = $("<td class=\"wbdv-first-name\">" + users[u].getFirstname() + "</td>")
+            let lastnameFld = $("<td class=\"wbdv-first-name\">" + users[u].getLastname() + "</td>")
+            let roleFld = $("<td class=\"wbdv-role\">" + users[u].getRole() + "</td>")
             let actionFld = $("<td class=\"wbdv-actions\"></td>")
             let spanFld = $("<span class=\"float-right\">")
             let removeBtn = $("<i id=\"wbdv-remove\" class=\"fa-2x fa fa-times wbdv-remove\"></i>")
@@ -61,9 +60,15 @@
     }
 
     const findAllUsers = () => {
+        users = []
         userService.findAllUsers()
             .then((theUsers) => {
-                users = theUsers
+                for(let i=0; i < theUsers.length; i++){
+                    let user = new User(theUsers[i].username, 
+                        theUsers[i].firstname, theUsers[i].lastname, 
+                        theUsers[i].role, theUsers[i]._id)
+                    users.push(user);
+                }
                 renderUsers()
             })     
     }
@@ -73,15 +78,11 @@
         let firstname = firstnameFld.val()
         let lastname = lastnameFld.val()
         let role = roleFld.val()
+        const user = new User(username, firstname, lastname, role)
         clearForm()
         if(username === "" || firstname === "" || lastname ==="") 
             return
-        userService.updateUser(currentUserId, {
-            username: username,
-            firstname: firstname,
-            lastname: lastname,
-            role: role
-        }).then(newUser => {    
+        userService.updateUser(currentUserId, user).then(newUser => {    
             findAllUsers()
         })
     }
@@ -96,12 +97,8 @@
         clearForm()  
         if(username === "" || firstname === "" || lastname ==="") 
             return
-        userService.createUser(
-            {"username": username,
-             "firstname": firstname,
-             "lastname": lastname,
-             "role": role
-            }).then(newUser => {
+        const user = new User(username, firstname, lastname, role)
+        userService.createUser(user).then(newUser => {
                 findAllUsers()
             })
     }
