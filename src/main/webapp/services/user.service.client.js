@@ -21,14 +21,14 @@ function AdminUserServiceClient() {
             return response.json()
         })
     }
-    function findUserById(userId) {
-        return fetch(`${self.url}/${userId}`)
+    function findUserById(id) {
+        return fetch(`${self.url}/${id}`)
             .then(response => {
                 return response.json()
             })
     }
-    function updateUser(userId, user) {
-        return fetch(`${self.url}/${userId}`, {
+    function updateUser(id, user) {
+        return fetch(`${self.url}/${id}`, {
             method:'PUT',
             body: JSON.stringify(user),
             headers: {
@@ -36,8 +36,8 @@ function AdminUserServiceClient() {
             }
         }).then(response => response.json())
     }
-    function deleteUser(userId) {
-        return fetch(`${self.url}/${userId}`, {
+    function deleteUser(id) {
+        return fetch(`${self.url}/${id}`, {
             method: 'DELETE'
         })
     }

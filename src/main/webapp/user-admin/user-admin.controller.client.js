@@ -1,11 +1,15 @@
 (function () {
     let userService = new AdminUserServiceClient()
     let users = []
-    let tableBody = $(".wbdv-tbody")
-    let usernameFld = $("#usernameFld")
-    let firstnameFld = $("#firstNameFld")
-    let lastnameFld = $("#lastNameFld")
-    let roleFld = $("#roleFld")
+    let tableBody = $(".wbdv-tbody");
+    let usernameFld = $("#usernameFld");
+    let passwordFld = $("#passwordFld");
+    let firstNameFld = $("#firstNameFld");
+    let lastNameFld = $("#lastNameFld");
+    let roleFld = $("#roleFld");
+
+    let createBtn = $(".wbdv-create")
+    let updateBtn = $(".wbdv-update")
 
     const deleteUser = (index) => {
         const userId = users[index]._id
@@ -15,47 +19,55 @@
         })
     }
 
+    const findUserById = (userId) => {
+        return userService.findUserById(userId)
+    }
+
     let currentUserId = -1
     const editUser = index => {
         const userId = users[index].getUserId();
         currentUserId = userId;
-        userService.findUserById(userId).then(user => {
+        findUserById(userId).then(user => {
             usernameFld.val(user.username)
-            firstnameFld.val(user.firstname)
-            lastnameFld.val(user.lastname)
+            firstNameFld.val(user.firstname)
+            lastNameFld.val(user.lastname)
             roleFld.val(user.role)
         })
+    }
+
+    const renderUser = (user, index) => {
+        let row = $("<tr class=\"wbdv-template wbdv-user wbdv-hidden\">")
+        let usernameFld = $("<td class=\"wbdv-username\">" + user.getUsername() + "</td>")
+        let passwordFld = $("<td>&nbsp;</td>")
+        let firstnameFld = $("<td class=\"wbdv-first-name\">" + user.getFirstname() + "</td>")
+        let lastnameFld = $("<td class=\"wbdv-first-name\">" + user.getLastname() + "</td>")
+        let roleFld = $("<td class=\"wbdv-role\">" + user.getRole() + "</td>")
+        let actionFld = $("<td class=\"wbdv-actions\"></td>")
+        let spanFld = $("<span class=\"float-right\">")
+        let removeBtn = $("<i id=\"wbdv-remove\" class=\"fa-2x fa fa-times wbdv-remove\"></i>")
+        removeBtn.click(() => {
+            deleteUser(index)
+        })
+        let editBtn = $("<i id=\"wbdv-edit\" class=\"fa-2x fa fa-pencil wbdv-edit\"></i>")
+        editBtn.click(() => {
+            editUser(index)
+        })
+        spanFld.append(removeBtn)
+        spanFld.append(editBtn)
+        actionFld.append(spanFld)
+        row.append(usernameFld)
+        row.append(passwordFld)
+        row.append(firstnameFld)
+        row.append(lastnameFld)
+        row.append(roleFld)
+        row.append(actionFld)
+        tableBody.append(row)
     }
 
     const renderUsers = () => {
         tableBody.empty()
         for(let u=0; u<users.length; u++) {
-            let row = $("<tr class=\"wbdv-template wbdv-user wbdv-hidden\">")
-            let usernameFld = $("<td class=\"wbdv-username\">" + users[u].getUsername() + "</td>")
-            let passwordFld = $("<td>&nbsp;</td>")
-            let firstnameFld = $("<td class=\"wbdv-first-name\">" + users[u].getFirstname() + "</td>")
-            let lastnameFld = $("<td class=\"wbdv-first-name\">" + users[u].getLastname() + "</td>")
-            let roleFld = $("<td class=\"wbdv-role\">" + users[u].getRole() + "</td>")
-            let actionFld = $("<td class=\"wbdv-actions\"></td>")
-            let spanFld = $("<span class=\"float-right\">")
-            let removeBtn = $("<i id=\"wbdv-remove\" class=\"fa-2x fa fa-times wbdv-remove\"></i>")
-            removeBtn.click(() => {
-                deleteUser(u)
-            })
-            let editBtn = $("<i id=\"wbdv-edit\" class=\"fa-2x fa fa-pencil wbdv-edit\"></i>")
-            editBtn.click(() => {
-                editUser(u)
-            })
-            spanFld.append(removeBtn)
-            spanFld.append(editBtn)
-            actionFld.append(spanFld)
-            row.append(usernameFld)
-            row.append(passwordFld)
-            row.append(firstnameFld)
-            row.append(lastnameFld)
-            row.append(roleFld)
-            row.append(actionFld)
-            tableBody.append(row)
+            renderUser(users[u], u)
         }
     }
 
@@ -75,8 +87,8 @@
 
     const updateUser = () => {
         let username = usernameFld.val()
-        let firstname = firstnameFld.val()
-        let lastname = lastnameFld.val()
+        let firstname = firstNameFld.val()
+        let lastname = lastNameFld.val()
         let role = roleFld.val()
         const user = new User(username, firstname, lastname, role)
         clearForm()
@@ -86,13 +98,12 @@
             findAllUsers()
         })
     }
-    const updateBtn = $(".wbdv-update")
     updateBtn.click(updateUser)
 
     const createUser = () => {
         const username = usernameFld.val() 
-        const firstname = firstnameFld.val()
-        const lastname = lastnameFld.val()
+        const firstname = firstNameFld.val()
+        const lastname = lastNameFld.val()
         const role = roleFld.val()
         clearForm()  
         if(username === "" || firstname === "" || lastname ==="") 
@@ -102,13 +113,12 @@
                 findAllUsers()
             })
     }
-    let createBtn = $(".wbdv-create")
     createBtn.click(createUser) 
 
     const clearForm = () => {
         usernameFld.val("")
-        firstnameFld.val("")
-        lastnameFld.val("")
+        firstNameFld.val("")
+        lastNameFld.val("")
         roleFld.val("FACULTY")
     }
 
