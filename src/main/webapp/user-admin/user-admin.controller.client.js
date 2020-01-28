@@ -29,10 +29,7 @@
 
     let currentUserId = -1
     let currentIndex = -1
-    const editUser = index => {
-        const userId = users[index].getUserId();
-        currentUserId = userId;
-        currentIndex = index;
+    const editUser = (userId) => {
         findUserById(userId).then(user => {
             usernameFld.val(user.username)
             firstNameFld.val(user.firstname)
@@ -41,9 +38,18 @@
         })
     }
 
+    const selectUser = (index) => {
+        const userId = users[index].getUserId();
+        currentUserId = userId;
+        currentIndex = index;
+        editUser(userId)
+    }
+
     const renderUser = (user, index) => {
         let newRow = userRowTemplate.clone()
         newRow.removeClass("wbdv-template wbdv-hidden")
+        newRow.find(".wbdv-remove").attr("id", "wbdv-remove-" + index)
+        newRow.find(".wbdv-edit").attr("id", "wbdv-edit-" + index)
         newRow.find(".wbdv-username").html(user.getUsername())
         newRow.find(".wbdv-first-name").html(user.getFirstname())
         newRow.find(".wbdv-last-name").html(user.getLastname())
@@ -52,7 +58,7 @@
             deleteUser(index)
         })
         newRow.find(".wbdv-edit").click(() => {
-            editUser(index)
+            selectUser(index)
         })
         tableBody.append(newRow)
     }
@@ -83,14 +89,14 @@
         let firstname = firstNameFld.val()
         let lastname = lastNameFld.val()
         let role = roleFld.val()
-        const user = new User(username, firstname, lastname, role)
+        const user = new User(username, firstname, lastname, role, currentUserId)
         clearForm()
         if(username === "" || firstname === "" || lastname ==="" || role ==="") 
             return
         userService.updateUser(currentUserId, user).then(newUser => {   
-            user.setUserId(newUser._id)
-            users[currentIndex] = user
-            renderUsers()
+            // users[currentIndex] = user
+            // renderUsers()
+            findAllUsers()
         })
     }
     updateBtn.click(updateUser)
