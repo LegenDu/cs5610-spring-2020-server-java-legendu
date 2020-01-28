@@ -7,9 +7,11 @@
     let firstNameFld = $("#firstNameFld");
     let lastNameFld = $("#lastNameFld");
     let roleFld = $("#roleFld");
+    let userRowTemplate = $(".wbdv-template")
 
     let createBtn = $(".wbdv-create")
     let updateBtn = $(".wbdv-update")
+    let searchBtn = $(".wbdv-search")
 
     const deleteUser = (index) => {
         const userId = users[index]._id
@@ -36,38 +38,26 @@
     }
 
     const renderUser = (user, index) => {
-        let row = $("<tr class=\"wbdv-template wbdv-user wbdv-hidden\">")
-        let usernameFld = $("<td class=\"wbdv-username\">" + user.getUsername() + "</td>")
-        let passwordFld = $("<td>&nbsp;</td>")
-        let firstnameFld = $("<td class=\"wbdv-first-name\">" + user.getFirstname() + "</td>")
-        let lastnameFld = $("<td class=\"wbdv-first-name\">" + user.getLastname() + "</td>")
-        let roleFld = $("<td class=\"wbdv-role\">" + user.getRole() + "</td>")
-        let actionFld = $("<td class=\"wbdv-actions\"></td>")
-        let spanFld = $("<span class=\"float-right\">")
-        let removeBtn = $("<i id=\"wbdv-remove\" class=\"fa-2x fa fa-times wbdv-remove\"></i>")
-        removeBtn.click(() => {
+        let newRow = userRowTemplate.clone()
+        newRow.removeClass("wbdv-template wbdv-hidden")
+        newRow.find(".wbdv-username").html(user.getUsername())
+        newRow.find(".wbdv-first-name").html(user.getFirstname())
+        newRow.find(".wbdv-last-name").html(user.getLastname())
+        newRow.find(".wbdv-role").html(user.getRole())
+        newRow.find(".wbdv-remove").click(() => {
             deleteUser(index)
         })
-        let editBtn = $("<i id=\"wbdv-edit\" class=\"fa-2x fa fa-pencil wbdv-edit\"></i>")
-        editBtn.click(() => {
+        newRow.find(".wbdv-edit").click(() => {
             editUser(index)
         })
-        spanFld.append(removeBtn)
-        spanFld.append(editBtn)
-        actionFld.append(spanFld)
-        row.append(usernameFld)
-        row.append(passwordFld)
-        row.append(firstnameFld)
-        row.append(lastnameFld)
-        row.append(roleFld)
-        row.append(actionFld)
-        tableBody.append(row)
+        tableBody.append(newRow)
     }
 
     const renderUsers = () => {
         tableBody.empty()
         for(let u=0; u<users.length; u++) {
             renderUser(users[u], u)
+            console.log(users[u].getUserId())
         }
     }
 
@@ -110,10 +100,23 @@
             return
         const user = new User(username, firstname, lastname, role)
         userService.createUser(user).then(newUser => {
-                findAllUsers()
+                user.setUserId(newUser._id)
+                users.push(user)
+                renderUser(user, users.length - 1)
+                console.log(users.length - 1)
+                console.log(users)
             })
     }
-    createBtn.click(createUser) 
+    createBtn.click(createUser)
+    
+    // const searchUser = () => {
+    //     const username = usernameFld.val() 
+    //     const firstname = firstNameFld.val()
+    //     const lastname = lastNameFld.val()
+    //     const role = roleFld.val()
+        
+    // }
+    // searchBtn.click(searchUser)
 
     const clearForm = () => {
         usernameFld.val("")

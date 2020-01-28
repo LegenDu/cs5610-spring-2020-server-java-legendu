@@ -3,7 +3,6 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>User Admin</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"/>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"/>
@@ -17,14 +16,14 @@
     <div class="container">
         <h1>User Admin</h1>
         <table class="table">
-            <thead>
+            <thead class="thead-dark">
                 <tr>
                     <th scope="col">Username</th>
                     <th scope="col">Password</th>
                     <th scope="col">First Name</th>
                     <th scope="col">Last Name</th>
-                    <th scope="col">role</th>
-                    <th>&nbsp;</th>
+                    <th scope="col">Role</th>
+                    <th scope="col">&nbsp;</th>
                 </tr>
             </thead>
             <tr class="wbdv-form">
@@ -41,7 +40,7 @@
                     <input id="lastNameFld" class="form-control" type="text" placeholder="Last Name">
                 </td>
                 <td>
-                    <select name="" id="roleFld" class="form-control">
+                    <select id="roleFld" class="form-control">
                         <option value="FACULTY">Faculty</option>
                         <option value="STUDENT">Student</option>
                         <option value="ADMIN">Admin</option>
@@ -54,6 +53,19 @@
                 </td>              
             </tr>
             <tbody class="wbdv-tbody">
+                <tr class="wbdv-template wbdv-user wbdv-hidden">
+                    <td class="wbdv-username">ada</td>
+                    <td>&nbsp;</td>
+                    <td class="wbdv-first-name">Ada</td>
+                    <td class="wbdv-last-name">Lovelace</td>
+                    <td class="wbdv-role">FACULTY</td>
+                    <td class="wbdv-actions">
+                      <span class="float-right">
+                        <i id="wbdv-remove" class="fa-2x fa fa-times wbdv-remove"></i>
+                        <i id="wbdv-edit" class="fa-2x fa fa-pencil wbdv-edit"></i>
+                      </span>
+                    </td>
+                 </tr>              
             </tbody>
         </table>
     </div>
