@@ -13,6 +13,8 @@
     let updateBtn = $(".wbdv-update")
     let searchBtn = $(".wbdv-search")
 
+    function main(){}
+
     const deleteUser = (index) => {
         const userId = users[index]._id
         userService.deleteUser(userId).then(response =>{
@@ -26,9 +28,11 @@
     }
 
     let currentUserId = -1
+    let currentIndex = -1
     const editUser = index => {
         const userId = users[index].getUserId();
         currentUserId = userId;
+        currentIndex = index;
         findUserById(userId).then(user => {
             usernameFld.val(user.username)
             firstNameFld.val(user.firstname)
@@ -57,7 +61,6 @@
         tableBody.empty()
         for(let u=0; u<users.length; u++) {
             renderUser(users[u], u)
-            console.log(users[u].getUserId())
         }
     }
 
@@ -82,10 +85,12 @@
         let role = roleFld.val()
         const user = new User(username, firstname, lastname, role)
         clearForm()
-        if(username === "" || firstname === "" || lastname ==="") 
+        if(username === "" || firstname === "" || lastname ==="" || role ==="") 
             return
-        userService.updateUser(currentUserId, user).then(newUser => {    
-            findAllUsers()
+        userService.updateUser(currentUserId, user).then(newUser => {   
+            user.setUserId(newUser._id)
+            users[currentIndex] = user
+            renderUsers()
         })
     }
     updateBtn.click(updateUser)
@@ -96,34 +101,54 @@
         const lastname = lastNameFld.val()
         const role = roleFld.val()
         clearForm()  
-        if(username === "" || firstname === "" || lastname ==="") 
+        if(username === "" || firstname === "" || lastname ==="" || role ==="") 
             return
         const user = new User(username, firstname, lastname, role)
         userService.createUser(user).then(newUser => {
                 user.setUserId(newUser._id)
                 users.push(user)
                 renderUser(user, users.length - 1)
-                console.log(users.length - 1)
-                console.log(users)
             })
     }
     createBtn.click(createUser)
+
+    const checkDiff = (val1, val2) => {
+        if(val1 === "")
+            return true
+        else if(val1 === val2)
+            return true
+        else
+            return false
+    }
     
-    // const searchUser = () => {
-    //     const username = usernameFld.val() 
-    //     const firstname = firstNameFld.val()
-    //     const lastname = lastNameFld.val()
-    //     const role = roleFld.val()
-        
-    // }
-    // searchBtn.click(searchUser)
+    const searchUser = () => {
+        const username = usernameFld.val()
+        const firstname = firstNameFld.val()
+        const lastname = lastNameFld.val()
+        const role = roleFld.val()
+        userService.findAllUsers()
+            .then((theUsers) => {
+                users = []
+                for(let i=0; i < theUsers.length; i++){
+                    if(checkDiff(username, theUsers[i].username) && checkDiff(firstname, theUsers[i].firstname)
+                    && checkDiff(lastname, theUsers[i].lastname) && checkDiff(role, theUsers[i].role)){
+                        let user = new User(theUsers[i].username, 
+                            theUsers[i].firstname, theUsers[i].lastname, 
+                            theUsers[i].role, theUsers[i]._id)
+                        users.push(user);
+                    }    
+                }
+                renderUsers()
+            })
+    }
+    searchBtn.click(searchUser)
 
     const clearForm = () => {
         usernameFld.val("")
+        passwordFld.val("")
         firstNameFld.val("")
         lastNameFld.val("")
-        roleFld.val("FACULTY")
+        roleFld.val("")
     }
-
     findAllUsers()
 })();

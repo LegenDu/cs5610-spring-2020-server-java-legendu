@@ -1,3 +1,8 @@
 .wbdv-hidden {
     display: none;
 }
+
+.wbdv-user:hover {
+    background-color: #FFCF8B;
+    /* #ffff99;  */
+}
