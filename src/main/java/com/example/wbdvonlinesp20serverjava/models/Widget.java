@@ -1,9 +1,13 @@
 package com.example.wbdvonlinesp20serverjava.models;
-
+// import javax.persistence.Entity;
+// @Entity
+// @Table(name = "widgets")
 public class Widget {
+//     @Id
+//     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private String name;        // Optional name of the widget
     private String id;          // widget's unique identifier
-    private String type;        // type of the widget
+    private String type = "HEADING";        // type of the widget
     private int order;          // order with respect to widgets in the same list
     private String text;        // plain text
     private String url;         // absolute or relative URL referring to online resource
@@ -13,7 +17,7 @@ public class Widget {
     private String cssClass;
     private String style;       // CSS transformations applied to the widget
     private String value;       // some initial value interpreted by the widget
-    private String title;
+    private String title = "New Widget";
     private String topicId;     // corresponding topic
 
     public String getName() {

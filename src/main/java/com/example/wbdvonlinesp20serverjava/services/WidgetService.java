@@ -1,5 +1,6 @@
 package com.example.wbdvonlinesp20serverjava.services;
 import com.example.wbdvonlinesp20serverjava.models.Widget;
+// import com.example.wbdvonlinesp20serverjava.repositories.widgetRepository;
 import java.util.List;
 import java.util.ArrayList;
 import java.util.stream.Collectors;
@@ -7,6 +8,8 @@ import java.util.stream.Collectors;
 // @Service
 public class WidgetService {
     List<Widget> widgets = new ArrayList<Widget>();
+//     @Autowired
+//     WidgetRepository widgetRepository;
 
     {
         Widget w1 = new Widget();
@@ -61,5 +64,7 @@ public class WidgetService {
         return widgets;
     }    
 
-    
+//     public Widget findWidgetById(String wid){
+//
+//     }
 }

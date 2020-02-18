@@ -7,6 +7,7 @@ import com.example.wbdvonlinesp20serverjava.services.WidgetService;
 @RestController
 @CrossOrigin(origins = "*")
 public class WidgetController {
+//     @Autowired
     WidgetService service = new WidgetService();
 
     @PostMapping("/topics/{tid}/widgets")
