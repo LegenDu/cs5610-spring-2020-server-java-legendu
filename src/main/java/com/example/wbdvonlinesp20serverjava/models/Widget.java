@@ -1,10 +1,6 @@
 package com.example.wbdvonlinesp20serverjava.models;
-// import javax.persistence.Entity;
-// @Entity
-// @Table(name = "widgets")
+
 public class Widget {
-//     @Id
-//     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private String name;        // Optional name of the widget
     private String id;          // widget's unique identifier
     private String type = "HEADING";        // type of the widget
