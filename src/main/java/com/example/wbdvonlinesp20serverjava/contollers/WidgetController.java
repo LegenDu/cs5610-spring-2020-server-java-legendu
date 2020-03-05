@@ -2,7 +2,9 @@ package com.example.wbdvonlinesp20serverjava.contollers;
 import org.springframework.web.bind.annotation.*;
 import java.util.List;
 import com.example.wbdvonlinesp20serverjava.models.Widget;
+import com.example.wbdvonlinesp20serverjava.models.Topic;
 import com.example.wbdvonlinesp20serverjava.services.WidgetService;
+import com.example.wbdvonlinesp20serverjava.services.TopicService;
 import org.springframework.beans.factory.annotation.Autowired;
 
 
@@ -12,9 +14,13 @@ public class WidgetController {
     @Autowired
     WidgetService widgetService;
 
-    @PostMapping("/api/widgets")
-    public Widget createWidget(@RequestBody Widget newWidget) {
-        return widgetService.createWidget(newWidget);
+    @Autowired
+    TopicService topicService;
+
+    @PostMapping("/api/topics/{tid}/widgets")
+    public Widget createWidget(@PathVariable("tid") Integer tid, @RequestBody Widget newWidget) {
+//         return widgetService.createWidget(tid, newWidget);
+        return topicService.createWidgetForTopic(tid, newWidget);
     }
 
     @DeleteMapping("/api/widgets/{wid}")

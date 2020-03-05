@@ -44,8 +44,8 @@ public class TopicService {
         return topicRepository.findTopicById(tid);
     }
 
-    public List<Topic> findTopicByLessonId(String lid) {
-        return topicRepository.findTopicByLessonId(lid);
+    public List<Topic> findTopicsForLesson(String lid) {
+        return topicRepository.findTopicsForLesson(lid);
     }
 
     public Widget createWidgetForTopic(Integer tid, Widget newWidget) {

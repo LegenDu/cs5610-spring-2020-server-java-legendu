@@ -21,11 +21,6 @@ public class TopicController {
         return topicService.createTopic(newTopic);
     }
 
-    @PostMapping("/api/topics/{tid}/widgets")
-         public Widget createWidgetForTopic(@PathVariable("tid") Integer tid, @RequestBody Widget newWidget) {
-             return topicService.createWidgetForTopic(tid, newWidget);
-         }
-
     @DeleteMapping("/api/topics/{tid}")
     public int deleteTopic(@PathVariable("tid") int topicId) {
         return topicService.deleteTopic(topicId);
@@ -42,8 +37,8 @@ public class TopicController {
     }
 
     @GetMapping("/api/lessons/{lid}/topics")
-    public List<Topic> findTopicByLessonId(@PathVariable("lid") String lessonId) {
-        return topicService.findTopicByLessonId(lessonId);
+    public List<Topic> findTopicsForLesson(@PathVariable("lid") String lessonId) {
+        return topicService.findTopicsForLesson(lessonId);
     }
 
     @GetMapping("/api/topics")
