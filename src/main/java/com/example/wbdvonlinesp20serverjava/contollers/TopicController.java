@@ -22,9 +22,9 @@ public class TopicController {
     }
 
     @PostMapping("/api/topics/{tid}/widgets")
-    public Widget createWidgetForTopic(@PathVariable("tid") Integer tid, @RequestBody Widget newWidget) {
-        return topicService.createWidgetForTopic(tid, newWidget);
-    }
+         public Widget createWidgetForTopic(@PathVariable("tid") Integer tid, @RequestBody Widget newWidget) {
+             return topicService.createWidgetForTopic(tid, newWidget);
+         }
 
     @DeleteMapping("/api/topics/{tid}")
     public int deleteTopic(@PathVariable("tid") int topicId) {

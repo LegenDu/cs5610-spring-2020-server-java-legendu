@@ -31,6 +31,7 @@ public class WidgetService {
         oldWidget.setName(updatedWidget.getName());
         oldWidget.setType(updatedWidget.getType());
         oldWidget.setText(updatedWidget.getText());
+        oldWidget.setWidOrder(updatedWidget.getWidOrder());
         widgetRepository.save(oldWidget);
         return 1;
     }

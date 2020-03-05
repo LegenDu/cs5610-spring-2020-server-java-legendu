@@ -9,6 +9,9 @@ public class Widget {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;          // widget's unique identifier
+    @ManyToOne
+    @JsonIgnore
+    private Topic topic;     // corresponding topic
     private String name;        // Optional name of the widget
     private String type;        // type of the widget
     private int widOrder;          // order with respect to widgets in the same list
@@ -21,9 +24,7 @@ public class Widget {
     private String style;       // CSS transformations applied to the widget
     private String value;       // some initial value interpreted by the widget
     private String title;
-    @ManyToOne
-    @JsonIgnore
-    private Topic topic;     // corresponding topic
+
 
     public String getName() {
         return name;

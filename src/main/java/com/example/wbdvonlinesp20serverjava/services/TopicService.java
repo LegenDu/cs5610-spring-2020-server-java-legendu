@@ -5,6 +5,7 @@ import com.example.wbdvonlinesp20serverjava.repositories.TopicRepository;
 import com.example.wbdvonlinesp20serverjava.repositories.WidgetRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import java.io.*;
 
 import java.util.List;
 
@@ -26,10 +27,12 @@ public class TopicService {
     }
 
     public int updateTopic(int tid, Topic newTopic) {
+        System.out.println(newTopic.getTitle());
         Topic oldTopic = topicRepository.findTopicById(tid);
         oldTopic.setDescription(newTopic.getDescription());
         oldTopic.setLessonId(newTopic.getLessonId());
         oldTopic.setTitle(newTopic.getTitle());
+        topicRepository.save(oldTopic);
         return 1;
     }
 
