@@ -3,34 +3,42 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 import com.example.wbdvonlinesp20serverjava.models.Widget;
 import com.example.wbdvonlinesp20serverjava.services.WidgetService;
+import org.springframework.beans.factory.annotation.Autowired;
+
 
 @RestController
 @CrossOrigin(origins = "*")
 public class WidgetController {
-    WidgetService service = new WidgetService();
+    @Autowired
+    WidgetService widgetService;
 
-    @PostMapping("/topics/{tid}/widgets")
+    @PostMapping("/api/widgets")
     public Widget createWidget(@RequestBody Widget newWidget) {
-        return service.createWidget(newWidget);
+        return widgetService.createWidget(newWidget);
     }
 
-    @DeleteMapping("/widgets/{wid}")
-    public int deleteWidget(@PathVariable("wid") String widgetId) {
-        return service.deleteWidget(widgetId);
+    @DeleteMapping("/api/widgets/{wid}")
+    public int deleteWidget(@PathVariable("wid") int widgetId) {
+        return widgetService.deleteWidget(widgetId);
     }
 
-    @PutMapping("/widgets/{wid}")
-    public int updateWidget(@PathVariable("wid") String widgetId, @RequestBody Widget widget) {
-        return service.updateWidget(widgetId, widget);
+    @PutMapping("/api/widgets/{wid}")
+    public int updateWidget(@PathVariable("wid") int widgetId, @RequestBody Widget widget) {
+        return widgetService.updateWidget(widgetId, widget);
     }
 
-    @GetMapping("/widgets")
+    @GetMapping("/api/widgets")
     public List<Widget> findAllWidgets() {
-        return service.findAllWidgets();
+        return widgetService.findAllWidgets();
     }
 
-    @GetMapping("/widgets/{tid}")
-    public List<Widget> findWidgetsForTopic(@PathVariable("tid") String tid){
-        return service.findWidgetsForTopic(tid);
+    @GetMapping("/api/topics/{tid}/widgets")
+    public List<Widget> findWidgetsForTopic(@PathVariable("tid") int tid){
+        return widgetService.findWidgetsForTopic(tid);
+    }
+
+    @GetMapping("/api/widgets/{widgetId}")
+    public Widget findWidgetById(@PathVariable("widgetId") int wid) {
+        return widgetService.findWidgetById(wid);
     }
 }

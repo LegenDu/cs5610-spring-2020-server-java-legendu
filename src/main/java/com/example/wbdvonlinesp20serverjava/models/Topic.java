@@ -1,13 +1,19 @@
 package com.example.wbdvonlinesp20serverjava.models;
 import java.util.List;
-// import com.example.wbdvonlinesp20serverjava.models.Widget;
+import javax.persistence.*;
+import com.example.wbdvonlinesp20serverjava.models.Widget;
 
+@Entity
+@Table(name = "topics")
 public class Topic {
-    private Integer id;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private int id;
     private String title;
-    public String description;
-    public List<Widget> widgets;
-    public String lessonId;
+    private String description;
+    @OneToMany(mappedBy = "topic")
+    private List<Widget> widgets;
+    private String lessonId;
 
     public int getId() {
         return id;

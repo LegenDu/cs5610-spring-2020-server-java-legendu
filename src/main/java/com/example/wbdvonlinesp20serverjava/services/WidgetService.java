@@ -1,48 +1,50 @@
 package com.example.wbdvonlinesp20serverjava.services;
 import com.example.wbdvonlinesp20serverjava.models.Widget;
+import com.example.wbdvonlinesp20serverjava.repositories.WidgetRepository;
+import org.springframework.stereotype.Service;
+import org.springframework.beans.factory.annotation.Autowired;
 import java.util.List;
 import java.util.ArrayList;
 import java.util.stream.Collectors;
 import java.util.Collections;
 import java.util.Comparator;
 
+
+@Service
 public class WidgetService {
-    List<Widget> widgets = new ArrayList<Widget>();
+    @Autowired
+    WidgetRepository widgetRepository;
 
     public Widget createWidget(Widget newWidget) {
-        widgets.add(newWidget);
+        widgetRepository.save(newWidget);
         return newWidget;
     }
 
-    public int deleteWidget(String widgetId) {
-        widgets = widgets.stream()
-                .filter(w -> !w.getId().equals(widgetId)).collect(Collectors.toList());
+    public int deleteWidget(int widgetId) {
+        widgetRepository.deleteById(widgetId);
         return 1;
     }
 
-    public int updateWidget(String widgetId, Widget updateWidget) {
-        for(int i=0; i<widgets.size(); i++) {
-            Widget widget = widgets.get(i);
-            if(widget.getId().equals(widgetId)){
-                widgets.set(i, updateWidget);
-                return 1;
-            }
-        }
-        return 0;
+    public int updateWidget(int widgetId, Widget updatedWidget) {
+        Widget oldWidget = widgetRepository.findWidgetById(widgetId);
+        oldWidget.setTitle(updatedWidget.getTitle());
+        oldWidget.setName(updatedWidget.getName());
+        oldWidget.setType(updatedWidget.getType());
+        oldWidget.setText(updatedWidget.getText());
+        widgetRepository.save(oldWidget);
+        return 1;
     }
 
-    public List<Widget> findWidgetsForTopic(String topicId) {
-        List<Widget> resultWidgets = new ArrayList<Widget>();
-        for(Widget w: widgets){
-            if(topicId.equals(w.getTopicId())){
-                resultWidgets.add(w);
-            }
-        }
-        return resultWidgets;
+    public List<Widget> findWidgetsForTopic(int topicId) {
+        return (List<Widget>)widgetRepository.findWidgetsForTopic(topicId);
     }
 
     public List<Widget> findAllWidgets() {
-        return widgets;
+        return widgetRepository.findAllWidgets();
+    }
+
+    public Widget findWidgetById(int wid) {
+        return widgetRepository.findWidgetById(wid);
     }
 }
 

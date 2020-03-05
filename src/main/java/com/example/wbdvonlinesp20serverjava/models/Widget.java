@@ -1,10 +1,17 @@
 package com.example.wbdvonlinesp20serverjava.models;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import javax.persistence.*;
 
+@Entity
+@Table(name="widgets")
+// @Inheritance(strategy = InheritanceType.JOINED)
 public class Widget {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private int id;          // widget's unique identifier
     private String name;        // Optional name of the widget
-    private String id;          // widget's unique identifier
-    private String type = "HEADING";        // type of the widget
-    private int order;          // order with respect to widgets in the same list
+    private String type;        // type of the widget
+    private int widOrder;          // order with respect to widgets in the same list
     private String text;        // plain text
     private String url;         // absolute or relative URL referring to online resource
     private int size;
@@ -13,8 +20,10 @@ public class Widget {
     private String cssClass;
     private String style;       // CSS transformations applied to the widget
     private String value;       // some initial value interpreted by the widget
-    private String title = "New Widget";
-    private String topicId;     // corresponding topic
+    private String title;
+    @ManyToOne
+    @JsonIgnore
+    private Topic topic;     // corresponding topic
 
     public String getName() {
         return name;
@@ -24,11 +33,11 @@ public class Widget {
         this.name = name;
     }
 
-    public String getId() {
+    public int getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(int id) {
         this.id = id;
     }
 
@@ -40,12 +49,12 @@ public class Widget {
         this.type = type;
     }
 
-    public int getOrder() {
-        return order;
+    public int getWidOrder() {
+        return widOrder;
     }
 
-    public void setOrder(int order) {
-        this.order = order;
+    public void setWidOrder(int widOrder) {
+        this.widOrder = widOrder;
     }
 
     public String getText(){
@@ -120,11 +129,11 @@ public class Widget {
         this.title = title;
     }
 
-    public String getTopicId(){
-        return topicId;
+    public Topic getTopic() {
+        return topic;
     }
 
-    public void setTopicId(String topicId) {
-        this.topicId = topicId;
+    public void setTopic(Topic topic) {
+        this.topic = topic;
     }
 }
