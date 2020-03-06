@@ -23,7 +23,6 @@ public class Widget {
     private String cssClass;
     private String style;       // CSS transformations applied to the widget
     private String value;       // some initial value interpreted by the widget
-    private String title;
 
 
     public String getName() {
@@ -120,14 +119,6 @@ public class Widget {
 
     public void setValue(String value) {
         this.value = value;
-    }
-
-    public String getTitle() {
-        return title;
-    }
-
-    public void setTitle(String title) {
-        this.title = title;
     }
 
     public Topic getTopic() {

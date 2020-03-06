@@ -27,7 +27,6 @@ public class TopicService {
     }
 
     public int updateTopic(int tid, Topic newTopic) {
-        System.out.println(newTopic.getTitle());
         Topic oldTopic = topicRepository.findTopicById(tid);
         oldTopic.setDescription(newTopic.getDescription());
         oldTopic.setLessonId(newTopic.getLessonId());

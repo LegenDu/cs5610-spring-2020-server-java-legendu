@@ -27,7 +27,7 @@ public class WidgetService {
 
     public int updateWidget(int widgetId, Widget updatedWidget) {
         Widget oldWidget = widgetRepository.findWidgetById(widgetId);
-        oldWidget.setTitle(updatedWidget.getTitle());
+        oldWidget.setValue(updatedWidget.getValue());
         oldWidget.setName(updatedWidget.getName());
         oldWidget.setType(updatedWidget.getType());
         oldWidget.setText(updatedWidget.getText());
